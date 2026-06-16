@@ -64,6 +64,11 @@ chmod +x autosetup.sh
 git clone https://github.com/USER/dotfiles.git && cd dotfiles/linux && ./autosetup.sh
 ```
 
+## 커스터마이징
+* starship.toml 수정으로 터미널 바 커스텀 가능
+* fastfetch/config 수정으로 시작 배너 커스텀 가능
+  - 이미지 변경 시 1:1.6 비율의 투명 배경 이미지 사용
+
 ## 🧩 구조
 
 ```
