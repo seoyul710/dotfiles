@@ -2,8 +2,6 @@
 
 리눅스 환경 자동 세팅용 dotfiles + 설치 스크립트
 
----
-
 ## 🚀 지원 환경
 
 - Debian / Ubuntu / Kali 계열
