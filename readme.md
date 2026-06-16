@@ -10,8 +10,6 @@
 - zsh 기반 쉘 환경
 - SSH 접속 환경 포함
 
----
-
 ## ⚡ 설치 방법
 
 ### 1. 레포 클론
@@ -27,8 +25,6 @@ cd dotfiles/linux
 chmod +x autosetup.sh
 ./autosetup.sh
 ```
-
----
 
 ## 🧠 설치되는 것들
 
@@ -51,8 +47,6 @@ chmod +x autosetup.sh
 * fastfetch (로그인 배너)
 * kitty-terminfo (SSH 터미널 호환)
 
----
-
 ## 🎨 적용 내용
 
 * .zshrc 자동 적용
@@ -60,23 +54,17 @@ chmod +x autosetup.sh
 * fastfetch 설정 적용
 * SSH 접속 시 fastfetch 자동 실행
 
----
-
 ## ⚠️ 주의사항
 
 * 설치 후 반드시 로그아웃/재로그인 필요
 * zsh가 기본 쉘로 변경됨
 * SSH 환경에서는 TERM 설정이 중요함 (kitty-terminfo 필요)
 
----
-
 ## 🔥 실행 예시 (원라이너)
 
 ```bash
 git clone https://github.com/USER/dotfiles.git && cd dotfiles/linux && ./autosetup.sh
 ```
-
----
 
 ## 🧩 구조
 
@@ -88,8 +76,6 @@ dotfiles/
       ├── starship.toml
       └── fastfetch/
 ```
-
----
 
 ## 📌 목적
 
