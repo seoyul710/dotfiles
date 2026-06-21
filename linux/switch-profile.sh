@@ -73,6 +73,7 @@ apply_profile() {
     cp "$profile_dir/starship.toml" "$HOME/.config/starship.toml"
     rm -rf "$HOME/.config/fastfetch"
     cp -R "$profile_dir/fastfetch" "$HOME/.config/fastfetch"
+    rm -rf "$HOME/.cache/fastfetch/images"
 
     echo "$profile_name" > "$HOME/.config/dotfiles-profile"
     echo "Applied profile: $profile_name"
