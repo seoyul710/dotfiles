@@ -33,7 +33,7 @@ $time\
 [ ](fg:color_bg1)\
 $line_break$character"""
 
-palette = 'chisa'
+palette = 'lucilla'
 #palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
@@ -50,7 +50,7 @@ color_green = '#98971a'
 color_red = '#cc241d'
 color_purple = '#b16286'
 
-[palettes.chisa]
+[palettes.lucilla]
 # 텍스트
 color_fg1 = '#F5F1E8'
 
@@ -59,10 +59,10 @@ color_bg1 = '#24242a'   # time (가장 어두움)
 color_bg2 = '#7A5CFF'   # env 배경
 
 # 메인 흐름
-color_main1 = '#5B4BFF' # OS / username (레드)
-color_main2 = '#7A5CFF' # directory (다크)
-color_main3 = '#2A2A33' # git (다크2)
-color_main4 = '#5B4BFF' # language / env (핫핑크)
+color_main1 = '#5B4BFF' # OS / username (블루)
+color_main2 = '#7A5CFF' # directory (퍼플)
+color_main3 = '#2A2A33' # git (다크)
+color_main4 = '#5B4BFF' # language / env (블루)
 
 # 상태용
 color_green  = '#98971a'
