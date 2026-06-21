@@ -6,7 +6,7 @@ usage() {
     cat <<'EOF'
 Usage:
   ./switch-profile.sh list
-  ./switch-profile.sh apply <profile-name> [--backup] [--logo-type <type>]
+  ./switch-profile.sh apply <profile-name> [--backup]
 
 Profiles are loaded from ../profiles/<profile-name>.
 Each profile may contain:
@@ -20,7 +20,6 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "$script_dir/.." && pwd)"
 profiles_dir="$repo_root/profiles"
 backup_enabled=0
-logo_type=""
 
 list_profiles() {
     if [[ ! -d "$profiles_dir" ]]; then
@@ -104,15 +103,6 @@ case "$command" in
             case "$1" in
                 --backup)
                     backup_enabled=1
-                    ;;
-                --logo-type)
-                    if [[ $# -lt 2 ]]; then
-                        echo "Missing value for --logo-type" >&2
-                        usage
-                        exit 1
-                    fi
-                    logo_type="$2"
-                    shift
                     ;;
                 *)
                     echo "Unknown option: $1" >&2
