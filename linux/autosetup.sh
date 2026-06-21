@@ -19,6 +19,8 @@ wget \
 file \
 xxd \
 zsh \
+zsh-autosuggestions \
+zsh-syntax-highlighting \
 fastfetch \
 kitty-terminfo
 
