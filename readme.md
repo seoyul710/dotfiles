@@ -90,19 +90,6 @@ cd linux
 
 기존 설정은 기본적으로 `.backup.YYYYMMDD-HHMMSS` 형식으로 백업됩니다.
 
-### 새 프로필 추가
-
-레포 루트에서 실행합니다.
-
-```bash
-cp -R profiles/chisa profiles/new-profile
-```
-
-이후 아래 파일을 수정하면 됩니다.
-
-* `profiles/new-profile/starship.toml`
-* `profiles/new-profile/fastfetch/config.jsonc`
-* `profiles/new-profile/fastfetch/assets/*`
 
 ### 프로필 커스터마이징
 
