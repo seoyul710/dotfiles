@@ -50,7 +50,65 @@ chmod +x autosetup.sh
 * .zshrc 자동 적용
 * starship 설정 적용
 * fastfetch 설정 적용
+* 커스텀 프로필 적용 / 스위칭
 * SSH 접속 시 fastfetch 자동 실행
+
+## 🧑‍🎨 프로필 기능
+
+프로필은 `profiles/<프로필명>` 경로에 저장됩니다.
+
+각 프로필은 starship 프롬프트 설정과 fastfetch 배너 설정을 한 묶음으로 관리합니다.
+
+```
+profiles/
+ └── chisa/
+      ├── starship.toml
+      └── fastfetch/
+           ├── config.jsonc
+           └── assets/
+```
+
+### 프로필 목록 확인
+
+```bash
+cd linux
+./switch-profile.sh list
+```
+
+### 프로필 적용
+
+```bash
+cd linux
+./switch-profile.sh apply chisa
+```
+
+적용 시 아래 파일이 갱신됩니다.
+
+* `~/.config/starship.toml`
+* `~/.config/fastfetch`
+* `~/.config/dotfiles-profile`
+
+기존 설정은 기본적으로 `.backup.YYYYMMDD-HHMMSS` 형식으로 백업됩니다.
+
+### 새 프로필 추가
+
+레포 루트에서 실행합니다.
+
+```bash
+cp -R profiles/chisa profiles/new-profile
+```
+
+이후 아래 파일을 수정하면 됩니다.
+
+* `profiles/new-profile/starship.toml`
+* `profiles/new-profile/fastfetch/config.jsonc`
+* `profiles/new-profile/fastfetch/assets/*`
+
+### 프로필 커스터마이징
+
+* `starship.toml` 수정으로 터미널 바 커스텀 가능
+* `fastfetch/config.jsonc` 수정으로 시작 배너 커스텀 가능
+  * 이미지 변경 시 1:1.6 비율의 투명 배경 이미지 사용
 
 ## ⚠️ 주의사항
 
@@ -64,20 +122,18 @@ chmod +x autosetup.sh
 git clone https://github.com/USER/dotfiles.git && cd dotfiles/linux && ./autosetup.sh
 ```
 
-## 커스터마이징
-* starship.toml 수정으로 터미널 바 커스텀 가능
-* fastfetch/config 수정으로 시작 배너 커스텀 가능
-  - 이미지 변경 시 1:1.6 비율의 투명 배경 이미지 사용
-
 ## 🧩 구조
 
 ```
 dotfiles/
- └── linux/
-      ├── autosetup.sh
-      ├── .zshrc
-      ├── starship.toml
-      └── fastfetch/
+ ├── linux/
+ │    ├── autosetup.sh
+ │    ├── switch-profile.sh
+ │    └── .zshrc
+ └── profiles/
+      └── chisa/
+           ├── starship.toml
+           └── fastfetch/
 ```
 
 ## 📌 목적

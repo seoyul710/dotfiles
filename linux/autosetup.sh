@@ -34,7 +34,6 @@ mkdir -p ~/.config
 # dotfiles copy
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cp "$SCRIPT_DIR/.zshrc" ~/
-cp "$SCRIPT_DIR/starship.toml" ~/.config/
-cp -r "$SCRIPT_DIR/fastfetch" ~/.config/
+"$SCRIPT_DIR/switch-profile.sh" apply chisa --no-backup
 
 echo "done. relog required"

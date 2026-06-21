@@ -1,0 +1,217 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# os, 사용자명 → 경로 → git → 언어 → 환경 → 시간
+#기존 -> 시작: [] 끝: [ ]
+#불꽃:, 삼각형: 
+format = """
+[](fg:color_main4)\
+[ ](bg:color_main1)\
+$os\
+$username\
+[](bg:color_main2 fg:color_main1)\
+$directory\
+[](fg:color_main2 bg:color_main3)\
+$git_branch\
+$git_status\
+[](fg:color_main3 bg:color_main4)\
+$c\
+$cpp\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:color_main4 bg:color_bg2)\
+$docker_context\
+$conda\
+$pixi\
+[](fg:color_bg2 bg:color_bg1)\
+$time\
+[ ](fg:color_bg1)\
+$line_break$character"""
+
+palette = 'chisa'
+#palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg1 = '#fbf1c7'
+color_bg1 = '#3c3836'
+color_bg2 = '#665c54'
+
+color_main1 = '#d65d0e'
+color_main2 = '#d79921'
+color_main3 = '#689d6a'
+color_main4 = '#458588'
+
+color_green = '#98971a'
+color_red = '#cc241d'
+color_purple = '#b16286'
+
+[palettes.chisa]
+# 텍스트
+color_fg1 = '#e6e6e6'
+
+# 베이스 다크
+color_bg1 = '#24242a'   # time (가장 어두움)
+color_bg2 = '#34343c'   # env 배경
+
+# 메인 흐름
+color_main1 = '#ff3b3b' # OS / username (레드)
+color_main2 = '#575760' # directory (다크)
+color_main3 = '#44444d' # git (다크2)
+color_main4 = '#ff2e88' # language / env (핫핑크)
+
+# 상태용
+color_green  = '#98971a'
+color_red    = '#cc241d'
+color_purple = '#b16286'
+
+[os]
+disabled = false
+style = "bg:color_main1 fg:color_fg1"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[username]
+show_always = true
+style_user = "bg:color_main1 fg:color_fg1"
+style_root = "bg:color_main1 fg:color_fg1"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:color_fg1 bg:color_main2"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+#대문자
+"Documents" = "󰈙 "
+"Downloads" = ""
+"Music" = "󰝚"
+"Pictures" = ""
+"Developer" = "󰲋"
+"Files" = "󰉋"
+
+#소문자
+"documents" = "󰈙"
+"downloads" = ""
+"music" = "󰝚"
+"pictures" = ""
+"developer" = "󰲋"
+"files" = "󰉋"
+
+[git_branch]
+symbol = ""
+style = "bg:color_main3"
+format = '[[ $symbol $branch ](fg:color_fg1 bg:color_main3)]($style)'
+
+[git_status]
+style = "bg:color_main3"
+format = '[[($all_status$ahead_behind )](fg:color_fg1 bg:color_main3)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[cpp]
+symbol = " "
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[java]
+symbol = ""
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:color_main4"
+format = '[[ $symbol( $version) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_main4"
+format = '[[ $symbol( $version)( $virtualenv) ](fg:color_fg1 bg:color_main4)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_bg2"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg2)]($style)'
+
+[conda]
+style = "bg:color_bg2"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg2)]($style)'
+
+[pixi]
+style = "bg:color_bg2"
+format = '[[ $symbol( $version)( $environment) ](fg:color_fg1 bg:color_bg2)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:color_bg1"
+format = '[[  $time ](fg:color_fg1 bg:color_bg1)]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_red)'
+vimcmd_symbol = '[](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
+vimcmd_replace_symbol = '[](bold fg:color_purple)'
+vimcmd_visual_symbol = '[](bold fg:color_main2)'
