@@ -6,7 +6,7 @@ usage() {
     cat <<'EOF'
 Usage:
   ./switch-profile.sh list
-  ./switch-profile.sh apply <profile-name> [--no-backup]
+  ./switch-profile.sh apply <profile-name> [--backup]
 
 Profiles are loaded from ../profiles/<profile-name>.
 Each profile may contain:
@@ -19,7 +19,7 @@ EOF
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "$script_dir/.." && pwd)"
 profiles_dir="$repo_root/profiles"
-backup_enabled=1
+backup_enabled=0
 
 list_profiles() {
     if [[ ! -d "$profiles_dir" ]]; then
@@ -101,8 +101,8 @@ case "$command" in
 
         while [[ $# -gt 0 ]]; do
             case "$1" in
-                --no-backup)
-                    backup_enabled=0
+                --backup)
+                    backup_enabled=1
                     ;;
                 *)
                     echo "Unknown option: $1" >&2

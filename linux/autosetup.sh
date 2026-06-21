@@ -34,6 +34,6 @@ mkdir -p ~/.config
 # dotfiles copy
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cp "$SCRIPT_DIR/.zshrc" ~/
-"$SCRIPT_DIR/switch-profile.sh" apply chisa --no-backup
+"$SCRIPT_DIR/switch-profile.sh" apply default
 
 echo "done. relog required"

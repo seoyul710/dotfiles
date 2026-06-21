@@ -61,6 +61,10 @@ chmod +x autosetup.sh
 
 ```
 profiles/
+ ├── default/
+ │    ├── starship.toml
+ │    └── fastfetch/
+ │         └── config.jsonc
  └── chisa/
       ├── starship.toml
       └── fastfetch/
@@ -79,7 +83,7 @@ cd linux
 
 ```bash
 cd linux
-./switch-profile.sh apply chisa
+./switch-profile.sh apply default
 ```
 
 적용 시 아래 파일이 갱신됩니다.
@@ -88,8 +92,30 @@ cd linux
 * `~/.config/fastfetch`
 * `~/.config/dotfiles-profile`
 
-기존 설정은 기본적으로 `.backup.YYYYMMDD-HHMMSS` 형식으로 백업됩니다.
+프로필 전환 시 기존 설정은 기본적으로 백업하지 않습니다.
 
+백업이 필요하면 `--backup` 옵션을 추가합니다.
+
+```bash
+cd linux
+./switch-profile.sh apply default --backup
+```
+
+백업 파일은 `.backup.YYYYMMDD-HHMMSS` 형식으로 생성됩니다.
+
+### 새 프로필 추가
+
+레포 루트에서 실행합니다.
+
+```bash
+cp -R profiles/default profiles/new-profile
+```
+
+이후 아래 파일을 수정하면 됩니다.
+
+* `profiles/new-profile/starship.toml`
+* `profiles/new-profile/fastfetch/config.jsonc`
+* `profiles/new-profile/fastfetch/assets/*`
 
 ### 프로필 커스터마이징
 
@@ -118,6 +144,9 @@ dotfiles/
  │    ├── switch-profile.sh
  │    └── .zshrc
  └── profiles/
+      ├── default/
+      │    ├── starship.toml
+      │    └── fastfetch/
       └── chisa/
            ├── starship.toml
            └── fastfetch/

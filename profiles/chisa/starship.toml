@@ -111,11 +111,10 @@ truncation_symbol = "…/"
 
 [directory.substitutions]
 #대문자
-"Documents" = "󰈙 "
+"Documents" = "󰈙"
 "Downloads" = ""
 "Music" = "󰝚"
 "Pictures" = ""
-"Developer" = "󰲋"
 "Files" = "󰉋"
 
 #소문자
@@ -123,7 +122,6 @@ truncation_symbol = "…/"
 "downloads" = ""
 "music" = "󰝚"
 "pictures" = ""
-"developer" = "󰲋"
 "files" = "󰉋"
 
 [git_branch]
