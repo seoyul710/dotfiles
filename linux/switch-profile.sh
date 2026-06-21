@@ -43,35 +43,6 @@ backup_path() {
     cp -R "$target" "$target.backup.$timestamp"
 }
 
-detect_logo_type() {
-    if [[ -n "$logo_type" ]]; then
-        echo "$logo_type"
-        return
-    fi
-
-    case "$(uname -s)" in
-        Darwin)
-            echo "kitty-direct"
-            ;;
-        *)
-            echo "kitty"
-            ;;
-    esac
-}
-
-patch_fastfetch_logo_type() {
-    local config_path="$1"
-    local detected_logo_type
-
-    detected_logo_type="$(detect_logo_type)"
-
-    if ! grep -q '"type"[[:space:]]*:[[:space:]]*"kitty' "$config_path"; then
-        return
-    fi
-
-    perl -0pi -e "s/\"type\"\\s*:\\s*\"kitty(?:-direct)?\"/\"type\": \"$detected_logo_type\"/" "$config_path"
-}
-
 apply_profile() {
     local profile_name="$1"
     local profile_dir="$profiles_dir/$profile_name"
@@ -103,11 +74,9 @@ apply_profile() {
     cp "$profile_dir/starship.toml" "$HOME/.config/starship.toml"
     rm -rf "$HOME/.config/fastfetch"
     cp -R "$profile_dir/fastfetch" "$HOME/.config/fastfetch"
-    patch_fastfetch_logo_type "$HOME/.config/fastfetch/config.jsonc"
 
     echo "$profile_name" > "$HOME/.config/dotfiles-profile"
     echo "Applied profile: $profile_name"
-    echo "Fastfetch logo type: $(detect_logo_type)"
 }
 
 if [[ $# -lt 1 ]]; then
