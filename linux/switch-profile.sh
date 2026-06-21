@@ -75,6 +75,9 @@ apply_profile() {
     cp -R "$profile_dir/fastfetch" "$HOME/.config/fastfetch"
     rm -rf "$HOME/.cache/fastfetch/images"
 
+    printf "\033c"
+    fastfetch
+
     echo "$profile_name" > "$HOME/.config/dotfiles-profile"
     echo "Applied profile: $profile_name"
 }
