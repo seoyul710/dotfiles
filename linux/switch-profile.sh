@@ -6,7 +6,7 @@ usage() {
     cat <<'EOF'
 Usage:
   ./switch-profile.sh list
-  ./switch-profile.sh apply <profile-name> [--backup]
+  ./switch-profile.sh apply <profile-name> [--backup] [--logo-type <type>]
 
 Profiles are loaded from ../profiles/<profile-name>.
 Each profile may contain:
@@ -20,6 +20,7 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "$script_dir/.." && pwd)"
 profiles_dir="$repo_root/profiles"
 backup_enabled=0
+logo_type=""
 
 list_profiles() {
     if [[ ! -d "$profiles_dir" ]]; then
@@ -40,6 +41,35 @@ backup_path() {
     local timestamp
     timestamp="$(date +%Y%m%d-%H%M%S)"
     cp -R "$target" "$target.backup.$timestamp"
+}
+
+detect_logo_type() {
+    if [[ -n "$logo_type" ]]; then
+        echo "$logo_type"
+        return
+    fi
+
+    case "$(uname -s)" in
+        Darwin)
+            echo "kitty-direct"
+            ;;
+        *)
+            echo "kitty"
+            ;;
+    esac
+}
+
+patch_fastfetch_logo_type() {
+    local config_path="$1"
+    local detected_logo_type
+
+    detected_logo_type="$(detect_logo_type)"
+
+    if ! grep -q '"type"[[:space:]]*:[[:space:]]*"kitty' "$config_path"; then
+        return
+    fi
+
+    perl -0pi -e "s/\"type\"\\s*:\\s*\"kitty(?:-direct)?\"/\"type\": \"$detected_logo_type\"/" "$config_path"
 }
 
 apply_profile() {
@@ -73,9 +103,11 @@ apply_profile() {
     cp "$profile_dir/starship.toml" "$HOME/.config/starship.toml"
     rm -rf "$HOME/.config/fastfetch"
     cp -R "$profile_dir/fastfetch" "$HOME/.config/fastfetch"
+    patch_fastfetch_logo_type "$HOME/.config/fastfetch/config.jsonc"
 
     echo "$profile_name" > "$HOME/.config/dotfiles-profile"
     echo "Applied profile: $profile_name"
+    echo "Fastfetch logo type: $(detect_logo_type)"
 }
 
 if [[ $# -lt 1 ]]; then
@@ -103,6 +135,15 @@ case "$command" in
             case "$1" in
                 --backup)
                     backup_enabled=1
+                    ;;
+                --logo-type)
+                    if [[ $# -lt 2 ]]; then
+                        echo "Missing value for --logo-type" >&2
+                        usage
+                        exit 1
+                    fi
+                    logo_type="$2"
+                    shift
                     ;;
                 *)
                     echo "Unknown option: $1" >&2

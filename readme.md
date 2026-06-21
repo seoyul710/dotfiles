@@ -122,6 +122,9 @@ cp -R profiles/default profiles/new-profile
 * `starship.toml` 수정으로 터미널 바 커스텀 가능
 * `fastfetch/config.jsonc` 수정으로 시작 배너 커스텀 가능
   * 이미지 변경 시 1:1.6 비율의 투명 배경 이미지 사용
+  * 프로필 적용 시 macOS는 `kitty-direct`, Linux는 `kitty`로 이미지 출력 방식 자동 보정
+  * `kitty-direct` 사용 시 `logo.width`, `logo.height` 값을 함께 지정
+  * 직접 지정하려면 `./switch-profile.sh apply chisa --logo-type kitty-direct` 사용
 
 ## ⚠️ 주의사항
 
