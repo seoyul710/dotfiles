@@ -22,6 +22,7 @@ zsh \
 zsh-autosuggestions \
 zsh-syntax-highlighting \
 fastfetch \
+imagemagick \
 kitty-terminfo
 
 # zsh default shell
