@@ -138,6 +138,12 @@ cp -R profiles/default profiles/new-profile
 git clone https://github.com/USER/dotfiles.git && cd dotfiles/linux && ./autosetup.sh
 ```
 
+## Linux에서 Kitty 사용 시
+```bash
+cp kitty.conf ~/.config/kitty/kitty.conf
+```
+입력해서 설정 파일 복사
+
 ## 🧩 구조
 
 ```
